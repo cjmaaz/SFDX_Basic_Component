@@ -1,0 +1,98 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" controller="TransferProductController">
+	<!-- Attributes -->
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="Spinner" type="boolean" default="true"/>
+    <aura:attribute name="ListPTLI" type="Object[]"/>
+    <aura:attribute name="totalRecordsCount" type="Integer"/>
+    <aura:attribute name="selectedCount" type="integer" default="0"/>
+    
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    
+    <!-- UI -->
+    
+    <!-- Spinner -->
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <!--Header checkbox for select all-->
+                <th style="width:3.25rem;" class="slds-text-align_right">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <label class="slds-checkbox">
+                                <ui:inputCheckbox disabled="{!v.totalRecordsCount == 0}"
+                                                  aura:id="selectAllId"
+                                                  change="{!c.selectAllCheckbox}"/>
+                                <span class="slds-checkbox_faux"></span>
+                                <span class="slds-form-element__label"></span>
+                            </label>
+                        </div>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Name">Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Product">Product</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Number">Quantity Required</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Number">Quantity Sent</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.ListPTLI}" var="obj">
+                <tr>
+                    <th scope="row" class="slds-text-align_right" style="width:3.25rem;">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <label class="slds-checkbox">
+                                    <ui:inputCheckbox text="{!obj.Id}"
+                                                      value="{!obj.isChecked}"
+                                                      change="{!c.checkboxSelect}"/>
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-form-element__label text"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </th>
+                    <th scope="row">
+                        <div class="slds-truncate" title="{!obj.Name}">
+                            {!obj.Name}
+                        </div>
+                    </th> 
+                    <th scope="row">
+                        <div class="slds-truncate" title="{!obj.Product__r.Name}">
+                            {!obj.Product__r.Name}
+                        </div>
+                    </th>
+                    <th scope="row">
+                        <div class="slds-truncate" title="{!obj.Quantity_Transferred__c}">
+                            <lightning:formattedNumber value="{!obj.Quantity_Transferred__c}"/>
+                        </div>
+                    </th>
+                    <th scope="row">
+                        <div class="slds-truncate" title="{!obj.Quantity_Sent__c}">
+                            <lightning:formattedNumber value="{!obj.Quantity_Sent__c}"/>
+                        </div>
+                    </th>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    
+</aura:component>
