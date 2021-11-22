@@ -4,9 +4,6 @@
         dataPromise.then($A.getCallback(function(results){
             var i = 0;
             results.forEach((eachLI)=>{
-                if(eachLI.Quantity_Sent__c==undefined || eachLI.Quantity_Sent__c==''){
-                	eachLI.Quantity_Sent__c = 0;
-            	}
                 eachLI.isChecked = false;
                 i++;
             });
@@ -39,10 +36,8 @@
         for (var i = 0; i < ListPTLI.length; i++){
             if (selectedHeaderCheck == true) {
                 ListPTLI[i].isChecked = true;
-                component.set("v.selectedCount", ListPTLI.length);
             } else {
                 ListPTLI[i].isChecked = false;
-                component.set("v.selectedCount", 0);
             }
             updatedAllRecords.push(ListPTLI[i]);
         }
