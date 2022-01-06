@@ -1,0 +1,73 @@
+<template>
+  <div class="exampleHolder" if:true={spinnerFlag}>
+      <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+  </div>
+  <template if:false={noExistingRecurr}>
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <!--Header checkbox for select all-->
+                <th style="width:3.25rem;" class="slds-text-align_right">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <label class="slds-checkbox">
+                                <lightning-input class="allChecked" type="checkbox" label="" name="allChecked" onchange={handleAllSelect}></lightning-input>
+                            </label>
+                        </div>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Name">Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Product">Product</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" class="slds-text-align_right" style="width:3.25rem;">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <label class="slds-checkbox">
+                                <lightning-input class="eachSelect" type="checkbox" label="" name="ROW1" onchange={handleSelect}></lightning-input>
+                            </label>
+                        </div>
+                    </div>
+                </th>
+                <th scope="row">
+                    <div class="slds-truncate" title="Row1">
+                        ROW 1 COL 1
+                    </div>
+                </th>
+                <th scope="row">
+                    <div class="slds-truncate" title="Row2">
+                        ROW 1 COL 2
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th scope="row" class="slds-text-align_right" style="width:3.25rem;">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <label class="slds-checkbox">
+                                <lightning-input class="eachSelect" type="checkbox" label="" name="ROW2" onchange={handleSelect}></lightning-input>
+                            </label>
+                        </div>
+                    </div>
+                </th>
+                <th scope="row">
+                    <div class="slds-truncate" title="Row1">
+                        ROW 2 COL 1
+                    </div>
+                </th>
+                <th scope="row">
+                    <div class="slds-truncate" title="Row2">
+                        ROW 2 COL 2
+                    </div>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+  </template>
+</template>
