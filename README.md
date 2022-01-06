@@ -18,3 +18,7 @@ Basic components and classes used in different scenarios
   4. Quick_Action_LWC-meta.xml
   <br/>Quick_Action_LWC.html
   <br/>Quick_Action_LWC.js
+### 5. Custom Data Table with Spinner (LWC)
+  5. Custom Data Table with Spinner_LWC.html
+  <br/> Custom Data Table with Spinner_LWC.js
+  <br/> Custom Data Table with Spinner_LWC.css
