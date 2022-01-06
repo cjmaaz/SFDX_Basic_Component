@@ -5,13 +5,19 @@ selectedList = [];
 handleAllSelect(e) {
   let AllSelect = this.template.querySelectorAll('lightning-input.eachSelect');
   if (e.target.checked) {
+      this.selectedList = [];
       AllSelect.forEach(eachSelect => {
           eachSelect.checked = true;
       })
+      // ORIGINAL ARRAY RECEIVIED FROM APEX \/
+      /*this.allTechWorkObj.forEach(eachRecurr => {
+          this.selectedList.push(eachRecurr.key);
+      })*/
   } else {
       AllSelect.forEach(eachSelect => {
           eachSelect.checked = false;
       })
+      this.selectedList = [];
   }
 }
 handleSelect(e) {
