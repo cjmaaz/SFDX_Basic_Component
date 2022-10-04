@@ -22,3 +22,7 @@ Basic components and classes used in different scenarios
   5. Custom Data Table with Spinner_LWC.html
   <br/> Custom Data Table with Spinner_LWC.js
   <br/> Custom Data Table with Spinner_LWC.css
+
+
+### Aura Number Field
+Number fields allows e as exponential, k as thousand, etc This puts strict restriction on numbers, allowing only 0-9.
